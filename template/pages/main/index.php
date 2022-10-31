@@ -20,7 +20,7 @@
         <tr>
           <td><?= $agenda->getTitle() ?></td>
           <td><?= $agenda->getDetails() ?></td>
-          <td><?= date('m/d/y', $agenda->getDatetime()) ?></td>
+          <td><?= date('d/m/y', $agenda->getDatetime()) ?></td>
           <td><?= $agenda->getImportant() ?></td>
           <td><a href="?page=details&id=<?= $agenda->getId() ?>"><button>Voir le détail</button></a></td>
           <td><a href="/?page=remove&id=<?= $agenda->getId() ?>" role="button" class="contrast outline">Supprimer</a></td>

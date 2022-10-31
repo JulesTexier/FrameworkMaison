@@ -3,7 +3,9 @@
 namespace App\Entity;
 
 class Agenda {
-  private ?int $id;
+
+
+  private int $id;
   private ?string $title;
   private ?string $details;
   private ?string $date;
@@ -43,3 +45,4 @@ class Agenda {
     $this->important = $important;
   }
 }
+?>

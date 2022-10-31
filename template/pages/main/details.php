@@ -6,7 +6,7 @@
       <p><?= $data['agenda']->getDetails() ?></p>
     </div>
     <div>
-      <h2><?= date('m/d/y', $data['agenda']->getDatetime()) ?></h2>
+      <h2><?= date('d/m/y', $data['agenda']->getDatetime()) ?></h2>
 
       <a href="?page=remove&id=<?=$data['agenda']->getId() ?> " role="button" class="contrast outline">Supprimer</a>
     </div>

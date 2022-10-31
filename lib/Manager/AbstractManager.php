@@ -72,7 +72,7 @@ protected function readOne(string $class, array $criteria) {
   // }
 
 
-  protected function readMany(string $class, array $criteria) {
+  protected function readMany(string $class, array $criteria, string $order, int $limit, int $offset) {
     //var_dump('pas le même ? ',$criteria);
     if(!empty($criteria)){
       $strParams = [];
@@ -80,14 +80,28 @@ protected function readOne(string $class, array $criteria) {
         array_push($strParams, urlencode((string) $key) . " = '" .
         urlencode((string) $value) . "'");
       }
-      // var_dump("array à la sortie", $strParams);
-
       $filter = ' WHERE ' . implode(' AND ', $strParams);
-
-  } else {
-    $filter = '';
-  }
-    $query = "SELECT * FROM " . $this->classToTable($class) . $filter;
+    } else {
+      $filter = '';
+    }
+    if(!empty($order)){
+      $addOrder = ' ORDER BY ' . $order;
+    } else {
+      $addOrder = '';
+    }
+    if(!empty($limit)){
+      $addLimit = ' LIMIT ' . $limit;
+    } else {
+      $addLimit = '';
+    }
+    if(!empty($offset)){
+      $addOffset = ' OFFSET ' . $offset;
+    } else {
+      $addOffset = '';
+    }
+    
+    $query = "SELECT * FROM " . $this->classToTable($class) . $filter . $addOrder . $addLimit . $addOffset;
+    var_dump("array à la sortie", $query);
     $stmt = $this->executeQuery($query);
     $stmt->setFetchMode(\PDO::FETCH_CLASS, $class);
     return $stmt->fetchAll();

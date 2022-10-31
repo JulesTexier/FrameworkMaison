@@ -9,7 +9,7 @@
         <input type="text" id="dateTitle" name="dateTitle" placeholder="Titre" required>
       </label>
       <label for="date">
-        Date
+        Date (format : dd-mm-yyyy)
         <input type="string" id="date" name="date" placeholder="Date" required>
       </label>
     </div>
