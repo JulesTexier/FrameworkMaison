@@ -7,8 +7,8 @@ use App\Entity\Agenda;
 class AgendaManager extends AbstractManager{
 
 
-  public function findAll($criteria) {
-    return $this->readMany(Agenda::class, $criteria);
+  public function findAll($criteria, $order, $limit, $offstet) {
+    return $this->readMany(Agenda::class, $criteria, $order, $limit, $offstet);
   }
  
   public function add(Agenda $agenda) {
@@ -43,8 +43,8 @@ class AgendaManager extends AbstractManager{
     return $this->readOne(Agenda::class, $criteria);
   }
 
-  public function findBy(array $criteria) {
-    return $this->readMany(Agenda::class, $criteria);
+  public function findBy(array $criteria, string $order, int $limit, int $offset) {
+    return $this->readMany(Agenda::class, $criteria, $order, $limit, $offset);
   }
 
 

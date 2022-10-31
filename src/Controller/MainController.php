@@ -4,7 +4,7 @@ namespace App\Controller;
 
 use App\Manager\AgendaManager;
 use App\Entity\Agenda;
-//use Plugo\Services\Foo\Bar;
+use Plugo\Services\Foo\Bar;
 use Plugo\Controller\AbstractController;
  
 class MainController extends AbstractController {
@@ -12,8 +12,11 @@ class MainController extends AbstractController {
   public function index() {
     $agendaManager = new AgendaManager();
     $criteria = [];
+    $order = '';
+    $limit = 1000;
+    $offset = 0;
     return $this->renderView('main/index.php', [
-      'agendas' => $agendaManager->findAll($criteria),
+      'agendas' => $agendaManager->findAll($criteria, $order, $limit, $offset),
       'title' => 'Home',
       ]);
   }
@@ -26,21 +29,15 @@ class MainController extends AbstractController {
     !empty($_POST['important']) ? $strParams['important'] = $_POST['important']: '';
     !empty($_POST['date']) ? $strParams['date'] =  strtotime($_POST['date']) : '';
     !empty($_POST['limit']) ? array_push($strParams, ['limit' => $_POST['limit']]):'';
-    //var_dump("array à l'entréee", $strParams);
-
+    $order = '';
+    $limit = 1000;
+    $offset = 1000;
 
     return $this->renderView('main/index.php', [
-      'agendas' => $agendaManager->findBy($strParams),
+      'agendas' => $agendaManager->findBy($strParams, $order, $limit, $offset),
       'title' => 'Home'
     ]);
 
-    // return $this->renderView('main/index.php', [
-    //   'agendas' => $agendaManager->findBy([
-    //     'important' => $important,
-    //     'title' => $search
-    //   ]),
-    //   'title' => 'Home'
-    // ]);
   }
 
   public function post() {
