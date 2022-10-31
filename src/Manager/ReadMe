@@ -1,0 +1,24 @@
+Commment créer un service ?
+
+1/ créer un dossier "Services" puis un sous dossier au nom du service
+2/ Créer un service, c'est créer une classe
+
+<?php
+
+namespace Plugo\Services\Foo;
+
+class Bar {
+
+  public function helloXWorld(à: string {
+    return "HelloWorld"
+  })
+
+}
+
+3/ Pour l'utiliser aller sur un controller
+taper "use Plugo..."
+4/ ensuite créer une instance de service
+---------------------------------------------
+- Faire une présentation du projet
+- cahier des charges
+- kit UI
